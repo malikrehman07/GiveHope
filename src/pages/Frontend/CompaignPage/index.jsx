@@ -43,10 +43,10 @@ const CompaignPage = () => {
             setLoading(true);
             try {
                 // get compaign
-                const res = await axios.get(`http://localhost:8000/compaigns/read/${id}`);
+                const res = await axios.get(`https://backend-theta-silk-38.vercel.app/compaigns/read/${id}`);
                 setCompaign(res.data.compaign);
 
-                const donRes = await axios.get(`http://localhost:8000/compaign/${id}`);
+                const donRes = await axios.get(`https://backend-theta-silk-38.vercel.app/compaign/${id}`);
 
                 // sum donations
                 const totalRaised = (donRes.data.donations || []).reduce(

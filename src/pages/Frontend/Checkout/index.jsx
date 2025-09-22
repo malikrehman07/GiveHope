@@ -33,7 +33,7 @@ const CheckoutForm = () => {
 
     const createPaymentIntent = async (amount) => {
         try {
-            const response = await axios.post("http://localhost:8000/create-payment-intent", {
+            const response = await axios.post("https://backend-theta-silk-38.vercel.app/create-payment-intent", {
                 amount: Math.round(amount * 100) // cents for Stripe
             });
             return response.data.clientSecret;
@@ -117,7 +117,7 @@ const CheckoutForm = () => {
         console.log('donationData', donationData)
 
         try {
-            await axios.post(`http://localhost:8000/checkout`, donationData);
+            await axios.post(`https://backend-theta-silk-38.vercel.app/checkout`, donationData);
             setState(initialState);
         } catch (e) {
             console.error("Donation error:", e);

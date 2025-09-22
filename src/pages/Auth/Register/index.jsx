@@ -35,7 +35,7 @@ const Register = () => {
         let userData = { firstName, lastName, email, password, role }
         setIsProcessing(true)
         try {
-            const res = await axios.post("http://localhost:8000/auth/register", userData)
+            const res = await axios.post("https://backend-theta-silk-38.vercel.app/auth/register", userData)
             const token = res.data.token;
 
             localStorage.setItem("token", token)

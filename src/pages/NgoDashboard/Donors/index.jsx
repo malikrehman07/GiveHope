@@ -14,7 +14,7 @@ const Donors = () => {
     const fetchDonations = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:8000/dashboard/donations", {
+        const res = await axios.get("https://backend-theta-silk-38.vercel.app/dashboard/donations", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDonations(res.data.donations || []);

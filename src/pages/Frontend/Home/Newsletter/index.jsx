@@ -15,7 +15,7 @@ const NewsLetter = () => {
         if (!window.isEmail(email)) { return window.notify("Please Enter Your Email", "error") }
         try {
             setLoading(true);
-            const res = await axios.post("http://localhost:8000/contact/subscribe", { email });
+            const res = await axios.post("https://backend-theta-silk-38.vercel.app/contact/subscribe", { email });
 
             if (res.data?.success) {
                 window.notify("Subscribed successfully! 🎉", 'success');

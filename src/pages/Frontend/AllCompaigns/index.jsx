@@ -34,8 +34,8 @@ const Compaigns = () => {
             const token = localStorage.getItem("token");
 
             const [compRes, donRes] = await Promise.all([
-                axios.get("http://localhost:8000/compaigns/read"),
-                axios.get("http://localhost:8000/dashboard/donations"),
+                axios.get("https://backend-theta-silk-38.vercel.app/compaigns/read"),
+                axios.get("https://backend-theta-silk-38.vercel.app/dashboard/donations"),
             ]);
 
             setCompaigns(compRes.data.compaigns);

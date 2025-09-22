@@ -35,7 +35,7 @@ const AllCompaigns = () => {
       }
 
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8000/compaigns/delete/${compaign._id}`, {
+      await axios.delete(`https://backend-theta-silk-38.vercel.app/compaigns/delete/${compaign._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,8 +53,8 @@ const AllCompaigns = () => {
     setLoading(true);
     try {
       const [compRes, donRes] = await Promise.all([
-        axios.get("http://localhost:8000/compaigns/read"),
-        axios.get("http://localhost:8000/dashboard/donations"),
+        axios.get("https://backend-theta-silk-38.vercel.app/compaigns/read"),
+        axios.get("https://backend-theta-silk-38.vercel.app/dashboard/donations"),
       ]);
 
       setCompaigns(compRes.data.compaigns);

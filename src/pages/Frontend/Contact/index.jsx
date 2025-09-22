@@ -11,7 +11,7 @@ const ContactUs = () => {
   const handleSubmit = async (values) => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:8000/contact", values);
+      await axios.post("https://backend-theta-silk-38.vercel.app/contact", values);
       message.success("Message sent successfully!");
     } catch (err) {
       console.error(err);

@@ -16,7 +16,7 @@ const Overview = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:8000/dashboard/my-donations", {
+        const res = await axios.get("https://backend-theta-silk-38.vercel.app/dashboard/my-donations", {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("API Donations Response:", res.data.donations);

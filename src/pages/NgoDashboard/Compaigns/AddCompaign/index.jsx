@@ -54,7 +54,7 @@ const AddCompaign = () => {
         const compaignData = { uid: user.uid, compaignId, title, description, category, amount, imageUrls };
 
         try {
-            const res = await axios.post("http://localhost:8000/compaigns/add", compaignData, {
+            const res = await axios.post("https://backend-theta-silk-38.vercel.app/compaigns/add", compaignData, {
                 headers: {
                     Authorization: `Bearer ${token}`, // ✅ Must be "Bearer <token>"
                 }

@@ -18,7 +18,7 @@ const EditCompaign = () => {
 
   const fetchCompaigns = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/compaigns/read/${id}`);
+      const res = await axios.get(`https://backend-theta-silk-38.vercel.app/compaigns/read/${id}`);
       const data = res.data.compaign;
       form.setFieldsValue(data);
 
@@ -94,7 +94,7 @@ const EditCompaign = () => {
 
       const token = localStorage.getItem("token");
 
-      await axios.put(`http://localhost:8000/compaigns/update/${id}`, {
+      await axios.put(`https://backend-theta-silk-38.vercel.app/compaigns/update/${id}`, {
         ...values,
         imageUrls,
       }, {

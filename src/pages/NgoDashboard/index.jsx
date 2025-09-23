@@ -20,19 +20,18 @@ const NGODashboard = () => {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-
-
+    
+    
     const pathKeyMap = {
         '/dashboard/overview': '1',
         '/dashboard/compaign/*': '2',
         '/dashboard/donations': '3',
         '/dashboard/donors': '4',
     };
-
-    const location = useLocation();
     const selectedKey = location.pathname.includes(pathKeyMap) // Adjust logic as needed
-
+    
     useEffect(() => {
         if (!searchQuery) {
             setResults([]);

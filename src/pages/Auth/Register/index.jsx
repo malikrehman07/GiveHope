@@ -53,7 +53,7 @@ const Register = () => {
         <main className="auth p-3 p-md-4 p-lg-5">
             <div className='container'>
                 <div className="card p-3 p-md-4 ">
-                    <Form layout='vertical' onFinish={handleSubmit} >
+                    <Form layout='vertical' >
                         <Row gutter={[16]} >
                             <Col xs={24} sm={24} md={12} lg={12} >
                                 <Form.Item label="First Name" required >
@@ -91,7 +91,7 @@ const Register = () => {
                         </Row>
                         <Row>
                             <Col span={24} >
-                                <Button type='primary' variant='solid' htmlType='submit' block loading={isProcessing}  >Register</Button>
+                                <Button type='primary' variant='solid' block loading={isProcessing} onClick={handleSubmit}  >Register</Button>
                                 <Paragraph className='text-center my-1' >Already have an account?<Link to="/auth/login" >Login</Link></Paragraph>
                             </Col>
                         </Row>

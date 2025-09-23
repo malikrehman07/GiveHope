@@ -26,6 +26,7 @@ const Donations = () => {
 
     useEffect(() => {
         const fetchDonations = async () => {
+            setLoading(true);
             const token = localStorage.getItem("token");
             try {
                 const res = await axios.get('https://backend-theta-silk-38.vercel.app/dashboard/donations', {

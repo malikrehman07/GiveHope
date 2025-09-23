@@ -71,7 +71,7 @@ const Compaigns = () => {
                                 <div style={{ cursor: 'pointer' }} onClick={() => navigate(`/compaign/${compaign._id}`)} >
                                     <img src={compaign.imageUrls?.[0]} alt={compaign.title} style={{ width: "300px", height: "200px", objectFit: "cover" }} className="img-fluid rounded-4" />
                                     <div className='my-2 text-start' >
-                                        <Title className='mb-0' level={4} style={{height:"50px", overflow:'hidden'}} >{compaign.title}</Title>
+                                        <Title className='mb-0' level={4} style={{ height: "50px", overflow: 'hidden' }} >{compaign.title}</Title>
                                         {/* <Paragraph >{compaign.description}</Paragraph> */}
                                     </div>
                                 </div>
@@ -94,6 +94,11 @@ const Compaigns = () => {
                         </Col>
                     )
                 })}
+            </Row>
+            <Row className='mt-5 mb-5 justify-content-center text-center'>
+                <Col span={24} >
+                    <Button type="primary" shape="round" size='large' variant='solid' onClick={() => navigate("/compaigns")} >View All</Button>
+                </Col>
             </Row>
         </div>
     )

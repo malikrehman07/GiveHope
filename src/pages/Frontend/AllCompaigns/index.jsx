@@ -97,11 +97,6 @@ const Compaigns = () => {
                     )
                 })}
             </Row>
-            <Row className='mt-5 mb-5 justify-content-center text-center'>
-                <Col span={24} >
-                    <Button type="primary" shape="round" size='large' variant='solid' onClick={() => navigate("/compaigns")} >View All</Button>
-                </Col>
-            </Row>
         </div>
     )
 }

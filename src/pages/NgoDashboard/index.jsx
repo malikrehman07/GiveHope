@@ -1,6 +1,6 @@
 // DashboardLayout.js
 import React from 'react';
-import { Layout, Menu, Input, Button } from 'antd';
+import { Layout, Menu, Input, Button, Dropdown } from 'antd';
 import { AppstoreOutlined, BarChartOutlined, CreditCardOutlined, SearchOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import Overview from './Overview';
@@ -8,11 +8,17 @@ import { useAuthContext } from '../../context/Auth';
 import Compaigns from './Compaigns';
 import Donors from './Donors';
 import Donations from './Donations';
+import { useEffect } from 'react';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+const { Search } = Input;
 const NGODashboard = () => {
     const { handleLogout } = useAuthContext()
+    const [results, setResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
 
     const pathKeyMap = {
         '/dashboard/overview': '1',
@@ -23,6 +29,41 @@ const NGODashboard = () => {
 
     const location = useLocation();
     const selectedKey = location.pathname.includes(pathKeyMap) // Adjust logic as needed
+
+    const searchMenu = (
+        <Menu>
+            {results.length === 0 && searchQuery && !loading ? (
+                <Menu.Item key="no-result">No results found</Menu.Item>
+            ) : (
+                results.map(c => (
+                    <Menu.Item key={c._id}>
+                        <Link to={`/dashboard/compaign/view/${c._id}`}>{c.title}</Link>
+                    </Menu.Item>
+                ))
+            )}
+        </Menu>
+    );
+
+    useEffect(() => {
+        if (!searchQuery) {
+            setResults([]);
+            return;
+        }
+
+        const timer = setTimeout(async () => {
+            setLoading(true);
+            try {
+                const res = await axios.get(`https://backend-theta-silk-38.vercel.app/compaigns/search?query=${searchQuery}`);
+                setResults(res.data.compaigns || []);
+            } catch (err) {
+                console.error("Search error:", err);
+            } finally {
+                setLoading(false);
+            }
+        }, 300); // debounce 300ms
+
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     return (
         <Layout>
@@ -52,7 +93,16 @@ const NGODashboard = () => {
             </Sider>
             <Layout>
                 <Header className="topbar d-flex justify-content-between align-items-center px-4">
-                    <Input prefix={<SearchOutlined />} placeholder="Search..." style={{ width: 300 }} />
+                    <Dropdown overlay={searchMenu} visible={results.length > 0}>
+                        <Search
+                            prefix={<SearchOutlined />}
+                            placeholder="Search campaigns..."
+                            style={{ width: 300 }}
+                            value={searchQuery}
+                            onChange={e => setSearchQuery(e.target.value)}
+                            loading={loading}
+                        />
+                    </Dropdown>
                     <div className="d-flex align-items-center">
                         <Button type="primary" color='default' variant='solid' htmlType="submit" onClick={handleLogout}>Logout</Button>
                     </div>

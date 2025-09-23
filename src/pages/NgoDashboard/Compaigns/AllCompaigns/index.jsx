@@ -1,6 +1,6 @@
 import { Button, Col, Space, Row, Typography, Spin, Table, Image } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../../../config/supabase';
 import axios from 'axios';
 import { useAuthContext } from '../../../../context/Auth';
@@ -13,6 +13,22 @@ const AllCompaigns = () => {
   const [loading, setLoading] = useState(true);
   const [compaignTotals, setCompaignTotals] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const highlightId = searchParams.get('highlight');
+
+  useEffect(() => {
+    if (highlightId) {
+      const timer = setTimeout(() => {
+        // force re-render to remove highlight
+        setCompaigns((prev) => [...prev]);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [highlightId]);
+
+
 
   const handleDelete = async (compaign) => {
     try {
@@ -152,15 +168,7 @@ const AllCompaigns = () => {
 
   if (loading) {
     return (
-      <Spin
-        size="large"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      />
+      <Spin size="large" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", }} />
     );
   }
 
@@ -179,7 +187,11 @@ const AllCompaigns = () => {
             dataSource={compaigns}
             pagination={{ pageSize: 8 }}
             scroll={{ x: "max-content" }}
+            rowClassName={(record) =>
+              record._id === highlightId ? "highlight-row" : ""
+            }
           />
+
         </Col>
         <Col span={24} className="text-center mt-3 ">
           <Button

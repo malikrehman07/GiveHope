@@ -20,6 +20,7 @@ const NGODashboard = () => {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const searchParams = new URLSearchParams(location.search);
 
 
     const pathKeyMap = {
@@ -31,20 +32,6 @@ const NGODashboard = () => {
 
     const location = useLocation();
     const selectedKey = location.pathname.includes(pathKeyMap) // Adjust logic as needed
-
-    const searchMenu = (
-        <Menu>
-            {results.length === 0 && searchQuery && !loading ? (
-                <Menu.Item key="no-result">No results found</Menu.Item>
-            ) : (
-                results.map(c => (
-                    <Menu.Item key={c._id}>
-                        <Link to={`/dashboard/compaign/view/${c._id}`}>{c.title}</Link>
-                    </Menu.Item>
-                ))
-            )}
-        </Menu>
-    );
 
     useEffect(() => {
         if (!searchQuery) {
@@ -62,11 +49,24 @@ const NGODashboard = () => {
             } finally {
                 setLoading(false);
             }
-        }, 300); // debounce 300ms
+        }, 300); // debounce
 
         return () => clearTimeout(timer);
     }, [searchQuery]);
 
+    const searchMenu = (
+        <Menu>
+            {results.length === 0 && searchQuery && !loading ? (
+                <Menu.Item key="no-result">No results found</Menu.Item>
+            ) : (
+                results.map(c => (
+                    <Menu.Item key={c._id} onClick={() => setResults([])}>
+                        <Link to={`/dashboard/compaign/all?highlight=${c._id}`} onClick={() => setResults([])}>{c.title}</Link>
+                    </Menu.Item>
+                ))
+            )}
+        </Menu>
+    );
     return (
         <Layout>
             <Sider breakpoint="lg" collapsedWidth="0" onBreakpoint={broken => { console.log(broken); }} onCollapse={(collapsed, type) => { console.log(collapsed, type); }} className="custom-sider">
@@ -95,7 +95,7 @@ const NGODashboard = () => {
             </Sider>
             <Layout>
                 <Header className="topbar d-flex justify-content-between align-items-center px-4">
-                    <Dropdown overlay={searchMenu} visible={results.length > 0}>
+                    <Dropdown overlay={searchMenu} trigger={['click']} visible={results.length > 0}>
                         <Search
                             prefix={<SearchOutlined />}
                             placeholder="Search campaigns..."

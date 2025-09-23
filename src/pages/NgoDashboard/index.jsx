@@ -105,7 +105,7 @@ const NGODashboard = () => {
                         />
                     </Dropdown>
                     <div className="d-flex align-items-center">
-                        <Button type="primary" color='default' variant='solid' htmlType="submit" onClick={handleLogout}>Logout</Button>
+                        <Button type="primary" variant='solid' htmlType="submit" onClick={handleLogout}>Logout</Button>
                     </div>
                 </Header>
 

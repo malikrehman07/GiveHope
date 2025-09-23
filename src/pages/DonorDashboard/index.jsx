@@ -33,7 +33,7 @@ const DonorDashboard = () => {
                 <Header className="topbar d-flex justify-content-between align-items-center px-4">
                     <Input prefix={<SearchOutlined />} placeholder="Search..." style={{ width: 300 }} />
                     <div className="d-flex align-items-center">
-                        <Button type="primary" color='default' variant='solid' htmlType="submit" onClick={handleLogout}>Logout</Button>
+                        <Button type="primary" variant='solid' htmlType="submit" onClick={handleLogout}>Logout</Button>
                     </div>
                 </Header>
 

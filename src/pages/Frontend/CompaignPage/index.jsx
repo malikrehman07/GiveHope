@@ -199,6 +199,7 @@ const CompaignPage = () => {
                         <Compaigns />
                     </Col>
                 </Row>
+                <Divider style={{ borderColor: '#222' }} />
             </div>
         </>
     );

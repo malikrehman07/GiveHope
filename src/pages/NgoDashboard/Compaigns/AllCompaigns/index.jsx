@@ -69,8 +69,8 @@ const AllCompaigns = () => {
     setLoading(true);
     try {
       const [compRes, donRes] = await Promise.all([
-        axios.get("https://backend-theta-silk-38.vercel.app/compaigns/read"),
-        axios.get("https://backend-theta-silk-38.vercel.app/dashboard/donations"),
+        axios.get("https://backend-theta-silk-38.vercel.app/compaigns/my-compaigns"),
+        axios.get("https://backend-theta-silk-38.vercel.app/dashboard/ngo-donations"),
       ]);
 
       setCompaigns(compRes.data.compaigns);

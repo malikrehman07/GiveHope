@@ -24,7 +24,7 @@ const ContactUs = () => {
 
   return (
     <div className="container my-5 py-4">
-      <Row gutter={[32, 32]}>
+      <Row gutter={[24, 24]}>
         {/* Left Side - Contact Info */}
         <Col xs={24} md={10}>
           <Title level={2}>Contact <span className='text-primary'>Us</span></Title>

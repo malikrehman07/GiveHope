@@ -10,7 +10,7 @@ const AboutUs = () => {
   return (
     <main>
       <div className="container my-5 py-4">
-        <Row gutter={[32, 32]} align="middle">
+        <Row gutter={[24, 24]} align="middle">
           <Col xs={24} md={12}>
             <img src="https://www.wildapricot.com/wp-content/uploads/2023/02/donation-button.png" alt="About Foodi" className="img-fluid rounded shadow"
             />

@@ -49,10 +49,10 @@ const AddCompaign = () => {
             return window.notify("Image upload failed", "error");
         }
 
-        const token = localStorage.getItem("token");
 
         const compaignData = { uid: user.uid, compaignId, title, description, category, amount, imageUrls };
 
+        const token = localStorage.getItem("token");
         try {
             const res = await axios.post("https://backend-theta-silk-38.vercel.app/compaigns/add", compaignData, {
                 headers: {

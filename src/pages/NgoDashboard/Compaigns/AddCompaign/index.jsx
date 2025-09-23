@@ -53,6 +53,7 @@ const AddCompaign = () => {
         const compaignData = { uid: user.uid, compaignId, title, description, category, amount, imageUrls };
 
         const token = localStorage.getItem("token");
+        console.log("Token:", token);
         try {
             const res = await axios.post("https://backend-theta-silk-38.vercel.app/compaigns/add", compaignData, {
                 headers: {

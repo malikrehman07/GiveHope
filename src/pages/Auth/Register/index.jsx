@@ -73,8 +73,8 @@ const Register = () => {
                             <Col span={24}>
                                 <Form.Item label="Role" required>
                                     <Select name="role" value={state.role} onChange={(value) => setState((prev) => ({ ...prev, role: value }))}>
-                                        <Select.Option value="NGO">NGO</Select.Option>
-                                        {/* <Select.Option value="Donor">Donor</Select.Option> */}
+                                        {/* <Select.Option value="NGO">NGO</Select.Option> */}
+                                        <Select.Option value="Donor">Donor</Select.Option>
                                     </Select>
                                 </Form.Item>
                             </Col>

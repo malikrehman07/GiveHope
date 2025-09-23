@@ -67,10 +67,12 @@ const AllCompaigns = () => {
 
   const getCompaigns = useCallback(async () => {
     setLoading(true);
+    const token = localStorage.getItem('token')
+    const headers = { Authorization: `Bearer ${token}` };
     try {
       const [compRes, donRes] = await Promise.all([
-        axios.get("https://backend-theta-silk-38.vercel.app/compaigns/my-compaigns"),
-        axios.get("https://backend-theta-silk-38.vercel.app/dashboard/ngo-donations"),
+        axios.get("https://backend-theta-silk-38.vercel.app/compaigns/my-compaigns"),{headers},
+        axios.get("https://backend-theta-silk-38.vercel.app/dashboard/ngo-donations"),{headers},
       ]);
 
       setCompaigns(compRes.data.compaigns);

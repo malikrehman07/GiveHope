@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Tag, Typography, Button, Avatar } from "antd";
+import { Table, Tag, Typography, Button, Avatar, Spin } from "antd";
 import axios from "axios";
 
 const { Title } = Typography;
@@ -100,6 +100,12 @@ const Donations = () => {
         },
     ];
 
+
+    if (loading) {
+        return (
+            <Spin size="large" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", }} />
+        );
+    }
 
     return (
         <div className="dashboard-content">

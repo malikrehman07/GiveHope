@@ -70,7 +70,14 @@ const CompaignPage = () => {
 
     if (loading) return <Spin size="large" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', }} />;
 
-    if (!compaign) return <Title level={3} className='justify-content-center text-center' >Product not found</Title>;
+    if (!compaign) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', textAlign: 'center', }}>
+                <Title level={3}>Compaign not found</Title>
+            </div>
+        );
+    }
+
 
     return (
         <>

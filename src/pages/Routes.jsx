@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <Routes>
       <Route path='/*' element={<Frontend />} />
-      <Route path='/auth/*' element={isAuth ? <Navigate to={user.role === "Donor" ? "/donor/donations" : "/dashboard/overview"} /> : <Auth />} />
+      <Route path="/auth/*" element={<ProtectedRoute authOnly={true}><Auth /></ProtectedRoute>} />
       <Route path='/donor/*' element={<PrivateRoute Component={DonorDashboard} role="Donor" />} />
       <Route path='/dashboard/*' element={<PrivateRoute Component={NgoDashboard} role="NGO" />} />
     </Routes>

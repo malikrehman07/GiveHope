@@ -69,7 +69,7 @@ const NGODashboard = () => {
     return (
         <Layout>
             <Sider breakpoint="lg" collapsedWidth="0" onBreakpoint={broken => { console.log(broken); }} onCollapse={(collapsed, type) => { console.log(collapsed, type); }} className="custom-sider">
-                <div className="logo text-center py-4 fw-bold text-black"><b className='text-primary' >GIve</b>Hope</div>
+                <div className="logo text-center py-4 fw-bold text-black"><b className='text-primary' >Give</b>Hope</div>
                 <Menu mode="inline"
                     selectedKeys={[pathKeyMap[selectedKey]]}
                     className="menu-light">

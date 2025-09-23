@@ -78,7 +78,7 @@ const Overview = () => {
 
   return (
     <div className="overview-content">
-      <Title level={3}>Welcome back, <b>{user.firstName}</b>!</Title>
+      <Title level={3}>Welcome back, <b className='text-primary' >{user.firstName}</b>!</Title>
       <Text>Here's Your Donation Overview</Text>
 
       <Row gutter={[16, 16]} className="mt-4">

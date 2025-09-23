@@ -78,7 +78,7 @@ const Overview = () => {
 
   return (
     <div className="dashboard-content">
-      <Title level={3}>Welcome back, <b>{user.firstName}</b>!</Title>
+      <Title level={3}>Welcome back, <b className='text-primary' >{user.firstName}</b>!</Title>
       <div className="overview-content">
         <Title level={3} className="text-center">Manage My Donations</Title>
         <Table

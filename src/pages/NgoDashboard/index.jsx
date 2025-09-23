@@ -44,7 +44,7 @@ const NGODashboard = () => {
         setSearchQuery(value);
 
         try {
-            const res = await axios.get(`https://backend-theta-silk-38.vercel.app/compaigns/search?query=${value}`);
+            const res = await axios.get(`https://backend-theta-silk-38.vercel.app/search?query=${value}`);
             setResults(res.data.compaigns || []);
         } catch (err) {
             console.error("Search error:", err);

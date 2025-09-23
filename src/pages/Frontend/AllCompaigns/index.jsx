@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCallback, useEffect } from 'react';
 import axios from 'axios'
-import { Button, Col, Flex, Progress, Rate, Row, Spin, Typography } from 'antd';
+import { Button, Col, Progress, Row, Spin, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../context/Auth';
 
@@ -70,7 +70,7 @@ const Compaigns = () => {
                         <Col xs={12} sm={12} md={12} lg={6} key={compaign.id}>
                             <div className="card border-0" style={{ width: "100%", height: '100%', display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ cursor: 'pointer' }} onClick={() => navigate(`/compaign/${compaign._id}`)} >
-                                    <img src={compaign.imageUrls?.[0]} alt={compaign.title} style={{ width: "400px", height:"300px", objectFit: "cover" }} className="img-fluid rounded-4" />
+                                    <img src={compaign.imageUrls?.[0]} alt={compaign.title} style={{ width: "300px", height: "200px", objectFit: "cover" }} className="img-fluid rounded-4" />
                                     <div className='my-2 text-start' >
                                         <Title className='mb-0' level={4} style={{height:"50px", overflow:'hidden'}} >{compaign.title}</Title>
                                         {/* <Paragraph >{compaign.description}</Paragraph> */}

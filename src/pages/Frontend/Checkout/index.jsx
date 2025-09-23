@@ -20,14 +20,14 @@ const CheckoutForm = () => {
     const elements = useElements();
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
+    const [donationAmount, setDonationAmount] = useState("");
+    const [customAmount, setCustomAmount] = useState("");
     const location = useLocation()
     const compaign = location.state?.compaign; // 👈 get compaign from state
 
     if (!compaign) {
         return <Title level={3}>No donation selected</Title>;
     }
-    const [donationAmount, setDonationAmount] = useState("");
-    const [customAmount, setCustomAmount] = useState("");
 
     const handleChange = (e) => setState(s => ({ ...s, [e.target.name]: e.target.value }));
 
@@ -67,7 +67,6 @@ const CheckoutForm = () => {
         if (!phoneNo) {
             return message.warning('Please enter your Phone No to proceed');
         }
-
         if (!total || total <= 0) {
             return message.error("Please select or enter a valid donation amount.");
         }
@@ -130,7 +129,7 @@ const CheckoutForm = () => {
     };
 
     return (
-        <main style={{ backgroundColor: "#ededed" }}>
+        <div style={{ backgroundColor: "#ededed" }}>
             <div className="container py-5">
                 <Row gutter={[16, 16]}>
                     {/* Address & Card */}
@@ -190,11 +189,7 @@ const CheckoutForm = () => {
                             <Title level={5}>Choose Amount</Title>
                             <Row >
                                 <Col span={24} >
-                                    <Radio.Group
-                                        onChange={(e) => { setDonationAmount(e.target.value); setCustomAmount(""); }}
-                                        value={donationAmount.toLocaleString()}
-                                        className="mb-3"
-                                    >
+                                    <Radio.Group onChange={(e) => { setDonationAmount(e.target.value); setCustomAmount(""); }} value={donationAmount.toLocaleString()} className="mb-3">
                                         <Radio value="50">$50</Radio>
                                         <Radio value="90">$100</Radio>
                                         <Radio value="200">$200</Radio>
@@ -204,12 +199,7 @@ const CheckoutForm = () => {
 
                                 <Col span={24} >
                                     <Form.Item label="Custom Amount">
-                                        <Input
-                                            type="number"
-                                            placeholder="Enter donation amount"
-                                            value={donationAmount.toLocaleString()}
-                                            onChange={(e) => setDonationAmount(e.target.value)}
-                                            required
+                                        <Input type="number" placeholder="Enter donation amount" value={donationAmount.toLocaleString()} onChange={(e) => setDonationAmount(e.target.value)} required
                                         />
                                     </Form.Item>
                                 </Col>
@@ -225,22 +215,14 @@ const CheckoutForm = () => {
 
                             <Row>
                                 <Col span={24}>
-                                    <Button
-                                        type="primary"
-                                        size="large"
-                                        block
-                                        onClick={handlePayment}
-                                        loading={isProcessing}
-                                    >
-                                        Donate Now
-                                    </Button>
+                                    <Button type="primary" size="large" block onClick={handlePayment} loading={isProcessing}>Donate Now</Button>
                                 </Col>
                             </Row>
                         </div>
                     </Col>
                 </Row>
             </div>
-        </main>
+        </div>
     );
 };
 

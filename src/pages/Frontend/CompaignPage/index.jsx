@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Typography, Spin, Row, Col, Rate, Button, Space, Card, Divider, Breadcrumb } from 'antd';
+import { Typography, Spin, Row, Col, Button, Card, Divider, Breadcrumb } from 'antd';
 import { Carousel } from 'antd';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import Compaigns from '../Home/Compaigns'
 import axios from 'axios';
 import { useAuthContext } from '../../../context/Auth';
@@ -19,7 +18,7 @@ const CompaignPage = () => {
     const { user } = useAuthContext();
     const navigate = useNavigate()
     const [raised, setRaised] = useState(0);
-    const [donations,setDonations] = useState([])
+    const [donations, setDonations] = useState([])
 
 
     const handleDonate = () => {
@@ -71,11 +70,11 @@ const CompaignPage = () => {
 
     if (loading) return <Spin size="large" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', }} />;
 
-    if (!compaign) return <Title level={3}>Product not found</Title>;
+    if (!compaign) return <Title level={3} className='justify-content-center text-center' >Product not found</Title>;
 
     return (
-        <main>
-            <div className="container">
+        <>
+            <div className="container mt-3 ">
                 <Row>
                     <Col span={24}>
                         <Breadcrumb
@@ -174,14 +173,11 @@ const CompaignPage = () => {
                 <Row gutter={[24, 24]} justify="center">
                     {donations.slice(0, 6).map((donation) => (
                         <Col xs={24} sm={12} md={12} lg={8} key={donation._id}>
-                            <Card
-                                bordered
-                                style={{ borderRadius: 12, textAlign: "center", padding: 10 }}
-                            >
+                            <Card bordered style={{ borderRadius: 12, textAlign: "center", padding: 10 }}>
                                 <Row justify="space-between" align="middle" >
-                                <Paragraph strong>{donation.fullName}</Paragraph>
-                                <br />
-                                <Paragraph type="success">Donated: ${donation.amount.toLocaleString()}</Paragraph>
+                                    <Paragraph strong>{donation.fullName}</Paragraph>
+                                    <br />
+                                    <Paragraph type="success">Donated: ${donation.amount.toLocaleString()}</Paragraph>
                                 </Row>
                             </Card>
                         </Col>
@@ -197,7 +193,7 @@ const CompaignPage = () => {
                     </Col>
                 </Row>
             </div>
-        </main>
+        </>
     );
 };
 

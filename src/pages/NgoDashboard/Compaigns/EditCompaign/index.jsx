@@ -150,24 +150,14 @@ const EditCompaign = () => {
             </Form.Item>
           </Col>
         </Row>
-
-        {/* <Form.Item label="Current Images">
-                    {fileList.map(file => (
-                        <img key={file.uid} src={file.url} alt="Compaign" style={{ width: 100, marginRight: 8 }} />
-                    ))}
-                </Form.Item> */}
-
         <Form.Item label="Upload New Images (optional)">
-          <Upload beforeUpload={() => false} listType="picture" fileList={fileList} onChange={({ fileList }) => setFileList([...fileList])} onRemove={handleRemove} maxCount={5}
-          >
+          <Upload beforeUpload={() => false} listType="picture" fileList={fileList} onChange={({ fileList }) => setFileList([...fileList])} onRemove={handleRemove} maxCount={2}>
             <Button icon={<UploadOutlined />}>Upload</Button>
           </Upload>
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" onClick={handleUpdate} htmlType='submit' color='default' variant='solid' loading={isProcessing}>
-            Update Compaign
-          </Button>
+          <Button type="primary" onClick={handleUpdate} htmlType='submit' color='default' variant='solid' loading={isProcessing}>Update Compaign</Button>
         </Form.Item>
       </Form>
     </div>

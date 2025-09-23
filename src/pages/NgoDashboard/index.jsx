@@ -8,6 +8,7 @@ import { useAuthContext } from '../../context/Auth';
 import Compaigns from './Compaigns';
 import Donors from './Donors';
 import Donations from './Donations';
+import NoPage from '../Misc/NoPage';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -64,6 +65,7 @@ const NGODashboard = () => {
                         <Route path='/compaign/*' element={<Compaigns />} />
                         <Route path='/donations' element={<Donations />} />
                         <Route path='/donors' element={<Donors />} />
+                        <Route path='*' element={<NoPage />} />
                     </Routes>
                     <Outlet />
                 </Content>

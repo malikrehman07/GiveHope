@@ -5,6 +5,7 @@ import { BarChartOutlined, EnvironmentOutlined, SearchOutlined, SettingOutlined,
 import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import Overview from './Overview'
 import { useAuthContext } from '../../context/Auth';
+import NoPage from '../Misc/NoPage';
 
 const { Header, Sider, Content } = Layout;
 const DonorDashboard = () => {
@@ -39,6 +40,7 @@ const DonorDashboard = () => {
                 <Content className="dashboard-content px-4 py-4">
                     <Routes>
                         <Route path='/donations' element={<Overview />} />
+                        <Route path='*' element={<NoPage />} />
                     </Routes>
                     <Outlet />
                 </Content>
